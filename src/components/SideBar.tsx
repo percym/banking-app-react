@@ -1,8 +1,14 @@
+'use client'
+import { sidebarLinks } from '@/constants'
+import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
+import path from 'path'
 import React from 'react'
+import { usePathname } from 'next/navigation'
 
 const SideBar = ({user}:SiderbarProps) => {
+  const pathname = usePathname();
   return (
     <section className="sidebar">
         <nav className="flex flex-col gap-4">
@@ -16,6 +22,17 @@ const SideBar = ({user}:SiderbarProps) => {
                         className="size-[24px] max-xl:size-14"/>
                     <h1 className="sidebar-logo">Horizon</h1> 
             </Link>
+            {sidebarLinks.map((item)=>{
+                const isActive = pathname === item.route||pathname.startsWith(`${item.route}/`)
+              return(
+                  <Link 
+                      href={item.route} 
+                      key={item.label}
+                      className={cn('sidebar-link',{'bg-bank-gradient':isActive})}>
+                        {item.label}
+                  </Link>
+              )
+            })}
         </nav>
     </section>
   )
