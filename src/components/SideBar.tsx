@@ -6,7 +6,6 @@ import Link from 'next/link'
 import path from 'path'
 import React from 'react'
 import { usePathname } from 'next/navigation'
-import logo from '../public/icons/logo.svg'
 
 const SideBar = ({user}:SiderbarProps) => {
   const pathname = usePathname();
@@ -16,7 +15,7 @@ const SideBar = ({user}:SiderbarProps) => {
             <Link href="/"
                 className="mb-12 cursor-pointer items-center gap-2 flex">
                     <Image 
-                        src={logo}
+                        src='/icons/logo.svg'
                         width={34}
                         height={34}
                         alt="logo"
@@ -36,8 +35,8 @@ const SideBar = ({user}:SiderbarProps) => {
                             alt={item.label}
                             fill
                             className={cn({'brightness-[3] invert-0 ':isActive})} />
-                          <p className={cn('sidebar-label',{'!text-white':isActive})}>{item.label}</p>
                         </div>
+                        <p className={cn('sidebar-label',{'!text-white':isActive})}>{item.label}</p>
                   </Link>
               )
             })}
