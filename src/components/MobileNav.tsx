@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/sheet"
 import Image from 'next/image'
 import Link from 'next/link'
-import logo from '../public/icons/logo.svg'
 import { sidebarLinks } from '@/constants'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
@@ -34,7 +33,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
                         <Link href="/"
                             className="cursor-pointer items-center gap-1 flex px-4">
                             <Image
-                                src={logo}
+                                src='/icons/logo.svg'
                                 width={34}
                                 height={34}
                                 alt="logo" />
