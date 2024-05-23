@@ -48,13 +48,14 @@ const AuthForm = ({formType}:{formType:string}) => {
       }
 
       if(formType === "sign-in"){
-        
         const response = await signIn({
           email:data.email,
-          password:data.password
+          password:data.password,
         })
         console.log(response)
-        if(response) router.push("/")
+        if(response){
+          router.push('/')
+        } 
       }
 
     } catch (error) {
