@@ -204,6 +204,7 @@ export const authFormSchema=(type:string)=> z.object({
   state:type === 'sign-in' ? z.string().optional():z.string().min(2,{message:'Enter state'}),
   ssn:type === 'sign-in' ? z.string().optional():z.string().min(3,{message:'Enter ssn'}),
   postalCode:type === 'sign-in' ? z.string().optional():z.string().min(2,{message:'Enter email address'}),
+  city:type === 'sign-in' ? z.string().optional():z.string().min(2,{message:'Enter city'}),
 
   email:z.string().email({message:'Enter a valid email address'}),
   password:z.string().min(8,{message:'Enter a valid password'}),
