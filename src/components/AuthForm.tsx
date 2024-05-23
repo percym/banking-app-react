@@ -21,7 +21,7 @@ import { authFormSchema } from "@/lib/utils"
 import { Loader2 } from "lucide-react"
 import SignUp from "@/app/(auth)/sign-up/page"
 import { useRouter } from "next/navigation"
-import {signUp, signIn} from '../lib/actions/user.actions'
+import {signUp, signIn} from "../lib/actions/user.actions"
 
 
 const AuthForm = ({formType}:{formType:string}) => {
@@ -42,19 +42,21 @@ const AuthForm = ({formType}:{formType:string}) => {
   const  onSubmit= async(data:z.infer<typeof formSchema >)=>{
     setIsLoading(true)
     try {
-      if(formType === 'sign-up'){
+      if(formType === "sign-up"){
           const newUser = await signUp(data);
           setUser(newUser);
       }
-      if(formType === 'sign-in'){
+
+      if(formType === "sign-in"){
+        
         const response = await signIn({
           email:data.email,
           password:data.password
         })
-        if(response) router.push('/')
+        console.log(response)
+        if(response) router.push("/")
       }
-    console.log(data)
-    setIsLoading(false)
+
     } catch (error) {
         console.log(error)
   }finally{
@@ -143,33 +145,33 @@ const AuthForm = ({formType}:{formType:string}) => {
                   inputType="date"/>  
               <CustomInput 
                   control={form.control} 
-                  name='ssn' 
-                  label='SSN' 
-                  placeholder='Enter your ssn' 
-                  inputType='text'/>  
+                  name="ssn" 
+                  label="SSN" 
+                  placeholder="Enter your ssn" 
+                  inputType="text"/>  
               </div>
           </>
         )}
           <CustomInput 
                 control={form.control} 
-                name='email' 
-                label='Email' 
-                placeholder='Enter email address' 
-                inputType='email'/>
+                name="email" 
+                label="Email" 
+                placeholder="Enter email address" 
+                inputType="email"/>
             <CustomInput
                 control={form.control} 
-                name='password' 
-                label='Password' 
-                placeholder='Enter password' 
-                inputType='password'/>
+                name="password" 
+                label="Password" 
+                placeholder="Enter password" 
+                inputType="password"/>
                 
-            <Button type="submit" className='form-btn'>
+            <Button type="submit" className="form-btn">
               {isLoading ?(
                 <>
-                <Loader2 size={20} className='animate-spin'/> &nbsp;
+                <Loader2 size={20} className="animate-spin"/> &nbsp;
                 Loading
                 </>
-              ):formType ==='sign-in' ? 'Sign In' : 'Sign Up'}
+              ):formType ==="sign-in" ? "Sign In" : "Sign Up"}
             </Button>
         </form>
         </Form>
