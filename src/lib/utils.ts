@@ -199,11 +199,11 @@ export const authFormSchema=(type:string)=> z.object({
   
   firstName: type === 'sign-in' ? z.string().optional():z.string().min(2,{message:'Enter first name'}),
   lastName: type === 'sign-in' ? z.string().optional():z.string().min(2,{message:'Enter last name'}),
-  dateOfBirth:z.date(),
+  dateOfBirth:z.string(),
   address:type === 'sign-in' ? z.string().optional():z.string().min(5,{message:'Address to short'}).max(50,{message:'Address too long' }),
   state:type === 'sign-in' ? z.string().optional():z.string().min(2,{message:'Enter state'}),
   ssn:type === 'sign-in' ? z.string().optional():z.string().min(3,{message:'Enter ssn'}),
-  postalCode:type === 'sign-in' ? z.string().optional():z.string().min(2,{message:'Enter email address'}),
+  postalCode:type === 'sign-in' ? z.string().optional():z.string().min(2,{message:'Enter email address'}).max(50),
   city:type === 'sign-in' ? z.string().optional():z.string().min(2,{message:'Enter city'}),
 
   email:z.string().email({message:'Enter a valid email address'}),

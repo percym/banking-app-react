@@ -21,6 +21,7 @@ import { authFormSchema } from "@/lib/utils"
 import { Loader2 } from "lucide-react"
 import SignUp from "@/app/(auth)/sign-up/page"
 import { useRouter } from "next/navigation"
+import {signUp, signIn} from '../lib/actions/user.actions'
 
 const AuthForm = ({formType}:{formType:string}) => {
   
@@ -41,15 +42,15 @@ const AuthForm = ({formType}:{formType:string}) => {
     setIsLoading(true)
     try {
       if(formType === 'sign-up'){
-          // const newUser = await signUp(data);
-          // setUser(newUser);
+          const newUser = await signUp(data);
+          setUser(newUser);
       }
       if(formType === 'sign-in'){
-        // const response = await signIn({
-        //   email:data.email,
-        //   password:data.password
-        // })
-        // if(response) router.push('/')
+        const response = await signIn({
+          email:data.email,
+          password:data.password
+        })
+        if(response) router.push('/')
       }
     console.log(data)
     setIsLoading(false)
